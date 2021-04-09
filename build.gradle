@@ -1,0 +1,38 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply from:'doma-gen.gradle'
+apply from:'eclipse.gradle'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+configurations {
+    domaGenRuntime
+}
+
+processResources.destinationDir = compileJava.destinationDir
+compileJava.dependsOn processResources
+
+dependencies {
+	def jdbcDriver = "com.springsource.com.mysql.jdbc:5.1.6"
+	//compile('org.seasar.doma.boot:doma-spring-boot-starter:1.1.1')
+	compile('org.seasar.doma:doma:2.19.2')
+	compile('org.springframework.boot:spring-boot-starter-integration')
+	runtime('org.springframework.boot:spring-boot-devtools')
+	compileOnly('org.projectlombok:lombok')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
