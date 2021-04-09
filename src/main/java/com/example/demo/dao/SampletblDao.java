@@ -9,9 +9,6 @@ import org.seasar.doma.boot.ConfigAutowireable;
 
 import com.example.demo.entity.Sampletbl;
 
-/**
- * @author k_kawasaki
- */
 @Dao
 @ConfigAutowireable
 public interface SampletblDao {
