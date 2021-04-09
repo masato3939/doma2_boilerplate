@@ -24,7 +24,7 @@ task gen << {
     def basePackage = 'com.example.demo'
     def resourceDir = 'src/main/resources'
     ant.taskdef(resource: 'domagentask.properties',classpath: configurations.domaGenRuntime.asPath)
-    ant.gen(url: 'jdbc:mysql://#DB ADDRESS#/#TABLE NAME#', user: '#username#', password: '#password#',templatePrimaryDir:'src/main/resources/template') {
+    ant.gen(url: 'jdbc:mysql://#db address#/#table name#', user: '#username#', password: '#password#',templatePrimaryDir:'src/main/resources/template') {
         entityConfig(packageName: "${basePackage}.entity", useAccessor: false, useListener: false)
         daoConfig(packageName: "${basePackage}.dao", overwrite: true)
         sqlConfig(generate:"true",destDir:"src/main/resources")
